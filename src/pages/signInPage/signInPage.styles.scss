@@ -1,0 +1,25 @@
+.SignInPage {
+
+    .header {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 20px;
+    }
+    .login-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+
+        .form {
+            width: 50%;
+            border-right: 1px solid black;
+            padding: 50px;
+        }
+        .auth-buttons{
+            width: 50%;
+            padding: 20px;
+            text-align: center;
+        }
+    }
+}

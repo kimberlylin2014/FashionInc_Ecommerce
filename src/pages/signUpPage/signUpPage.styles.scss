@@ -1,0 +1,18 @@
+.SignUpPage {
+    .header {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 20px;
+    }
+    .login-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+
+        .form {
+            width: 50%;
+        }
+    }
+   
+}
