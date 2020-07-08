@@ -1,0 +1,17 @@
+.ShopItem {
+    margin-bottom: 20px;
+    .image {
+        text-align: center;
+        height: 85%;
+        img{
+            width: 80%;
+            height: 100%;
+        }
+    }
+    .detail {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 40px;
+    }
+}

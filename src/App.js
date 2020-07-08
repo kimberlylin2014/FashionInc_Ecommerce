@@ -7,6 +7,8 @@ import LandingPage from './pages/landingPage/landingPage.component'
 import SignInPage from './pages/signInPage/signInPage.component';
 import SignUpPage from './pages/signUpPage/signUpPage.component';
 import HomePage from './pages/homePage/homePage.component'
+import MyAccount from './pages/userAccountPage/userAccountPage.component'
+import SectionPage from './pages/sectionPage/sectionPage.component'
 
 import {auth} from './firebase/firebase.util';
 
@@ -22,17 +24,17 @@ class App extends Component {
     auth.onAuthStateChanged(async(authUser) => {
       if(authUser) {
         let userRef = await createUserProfileDocument(authUser);
+        let snapShot = await userRef.get();
         userRef.onSnapshot(snapShot => {
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data()
-          })
+          });
         })
       } else {
-        setCurrentUser(authUser)
-      }
-      
-    })
+        setCurrentUser(authUser);
+      }  
+    });
   }
   render() {
     const {currentUser} = this.props;
@@ -40,7 +42,21 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Switch>
-          <Route exact path='/' component={LandingPage}/>
+          <Route exact path='/homepage/shop/:section' component={SectionPage}/>
+          <Route exact path='/' render ={() => (
+            currentUser ? (
+              <Redirect to='/homepage'/>
+            ) : (
+              <LandingPage />
+            )
+          )}/>
+          <Route exact path='/myAccount' render ={() => (
+            currentUser ? (
+              <MyAccount />
+            ) : (
+              <Redirect to='/'/>
+            )
+          )}/>
           <Route exact path='/homepage' render={() => (
             currentUser ? (
               <HomePage />
@@ -52,8 +68,12 @@ class App extends Component {
             currentUser ? (
             <Redirect to='/homepage'/>) :(
             <SignInPage />)
-      )}/>
-          <Route exact path='/SignUp' component={SignUpPage}/>
+          )}/>
+          <Route exact path='/SignUp' render={() => (
+            currentUser ? (
+            <Redirect to='/homepage'/>) :(
+            <SignUpPage />)
+          )}/>
         </Switch>
       </div>
     )

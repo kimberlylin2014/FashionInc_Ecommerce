@@ -2,7 +2,7 @@ import React from 'react';
 import './customButton.styles.scss';
 
 const CustomButton = ({...props}) => {
-    const {type, onClick, children, isGoogle, isFB, isSignIn} = props;
+    const {type, onClick, disabled, children, isGoogle, isFB, isSignIn} = props;
     return (
         <div className='CustomButton'>
             <button 
@@ -14,6 +14,7 @@ const CustomButton = ({...props}) => {
                 `} 
                 type={type} 
                 onClick={onClick}
+                disabled={disabled}
             >
                 {children}
             </button>
