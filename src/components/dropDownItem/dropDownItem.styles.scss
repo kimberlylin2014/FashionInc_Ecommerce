@@ -1,0 +1,16 @@
+.DropDownItem {
+    display: flex;
+    // justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    img {
+        width: 90px;
+    }
+    .detail {
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10%;
+    }
+}

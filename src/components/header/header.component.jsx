@@ -10,14 +10,18 @@ import {
     NavLink,
   } from 'reactstrap';
 
+  import CheckoutDropdown from '../checkoutDropdown/checkoutDropdown.component';
+  import CartIcon from '../cartIcon/cartIcon.component'
+
   import {withRouter, Redirect} from 'react-router-dom';
   import { connect } from 'react-redux';
   import {createStructuredSelector} from 'reselect'
   import { selectCurrentUser } from '../../redux/user/user.selectors'
   import { auth } from '../../firebase/firebase.util'
-
+  import  {getCartVisibility} from '../../redux/cart/cart.selectors'
   
-  const Header = ({currentUser, history, ...props}) => {
+  const Header = ({currentUser, cartVisibility, history, ...props}) => {
+    console.log(cartVisibility)
     const [isOpen, setIsOpen] = useState(false);
   
     const toggle = () => setIsOpen(!isOpen);
@@ -44,16 +48,37 @@ import {
                   : 
                     "" 
                 }  
+                {currentUser ?  
+                  <NavItem>
+                    <NavLink onClick={()=> history.push('/homepage/shop')}>Shop Overview</NavLink>
+                  </NavItem>
+                  : 
+                    "" 
+                }  
+                {currentUser ?  
+                  <NavItem>
+                    <CartIcon />
+                  </NavItem>
+                  : 
+                    "" 
+                }  
+                {cartVisibility ? <CheckoutDropdown /> : ""}
+                  
               </Nav>
+ 
             </Collapse>
+ 
           </div>   
+  
         </Navbar>
+       
       </div>
     );
   }
   
   const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser
+    currentUser: selectCurrentUser,
+    cartVisibility: getCartVisibility
   });
 
   export default withRouter(connect(mapStateToProps)(Header));

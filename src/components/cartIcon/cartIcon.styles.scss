@@ -1,0 +1,19 @@
+.CartIcon {
+    position: relative;
+    .icon {
+        width: 40px;
+        margin-left: 20px;
+    }
+    .itemCount {
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        width: 27px;
+        height: 27px;
+        position: absolute;
+        text-align: center;
+        right: -15px;
+        top: 3px;
+    }
+}
+

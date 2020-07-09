@@ -9,6 +9,7 @@ export const selectShopCollections =  createSelector(
     }
 )
 
+// select a specific collection category : hats, shoes, etc
 export const selectCollectionSection = (sectionParam) => {
     return createSelector(
         [selectShopCollections],
@@ -17,3 +18,9 @@ export const selectCollectionSection = (sectionParam) => {
         }
     )
 }
+
+// select the array of categories along with items
+export const selectCollectionPreview = createSelector(
+    [selectShopCollections],
+    (collections) => Object.keys(collections).map(key => collections[key])
+)

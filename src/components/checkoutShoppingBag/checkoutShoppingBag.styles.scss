@@ -1,0 +1,51 @@
+.CheckoutShoppingBag {
+    
+    &.container {
+        width: 70%;
+        height: 460px;
+        padding: 20px;
+      
+    }
+
+    margin-top: 2%;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
+              0 2px 2px rgba(0,0,0,0.11), 
+              0 4px 4px rgba(0,0,0,0.11), 
+              0 6px 8px rgba(0,0,0,0.11),
+              0 8px 16px rgba(0,0,0,0.11);
+    
+    .header {
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 1px solid black;
+    }
+
+
+    .list-items {
+        overflow: scroll;
+        height: 300px;
+    }
+   
+    .footer {
+        float: right;
+        display: flex;
+        h6 {
+            background-color: #596e79;
+            padding: 10px 20px;
+            color: white;
+            margin: 0;
+        }
+        button {
+            border: 1px solid black;
+            margin-left: 20px;
+            width: 100px;
+            &:hover {
+                background-color: #596e79;
+                color: white;
+            }
+        }
+     
+    }
+}

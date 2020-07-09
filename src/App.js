@@ -9,6 +9,8 @@ import SignUpPage from './pages/signUpPage/signUpPage.component';
 import HomePage from './pages/homePage/homePage.component'
 import MyAccount from './pages/userAccountPage/userAccountPage.component'
 import SectionPage from './pages/sectionPage/sectionPage.component'
+import ShopOverviewPage from './pages/shopOverviewPage/shopOverviewPage.component'
+import CheckoutPage from './pages/checkoutPage/checkoutPage.component'
 
 import {auth} from './firebase/firebase.util';
 
@@ -42,7 +44,9 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Switch>
+          <Route exact path='/homepage/shop' component={ShopOverviewPage}/>
           <Route exact path='/homepage/shop/:section' component={SectionPage}/>
+          <Route exact path='/checkoutPage' component={CheckoutPage}/>
           <Route exact path='/' render ={() => (
             currentUser ? (
               <Redirect to='/homepage'/>

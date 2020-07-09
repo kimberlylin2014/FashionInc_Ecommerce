@@ -1,0 +1,30 @@
+.CheckoutShoppingBagItem {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    img {
+        width: 180px;
+    }
+    .product,
+    .name,
+    .quantity {
+        width: 21%;
+        font-size: 20px;
+    }
+    .quantity {
+        .increase {
+            margin: 10px;
+            cursor: pointer;
+        
+        }
+        .decrease {
+            margin: 10px;
+            cursor: pointer;
+        }
+    }
+    .price {
+        width: 19%;
+        font-size: 20px;
+    }
+}

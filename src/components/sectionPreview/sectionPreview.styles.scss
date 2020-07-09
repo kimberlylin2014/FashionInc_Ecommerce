@@ -1,0 +1,14 @@
+.SectionPreview {
+    h3 {
+        margin-left: 20px;
+        cursor: pointer;
+    }
+    .content-preview {
+      display: flex;   
+        
+        img{
+            width: 100%;
+        }
+
+    }
+}

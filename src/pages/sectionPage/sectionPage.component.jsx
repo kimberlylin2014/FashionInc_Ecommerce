@@ -15,7 +15,7 @@ const SectionPage = (props) => {
             <div className='section-items container'>
                 <div className='row'>
                     {section.items.map(item => (
-                        <ShopItem key={item.id} {...item} />
+                        <ShopItem key={item.id} item={item} colNum='col-3'/>
                     ))}
                 </div>
             </div>

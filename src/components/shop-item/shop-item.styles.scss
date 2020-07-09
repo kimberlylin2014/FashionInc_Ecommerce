@@ -1,17 +1,35 @@
 .ShopItem {
     margin-bottom: 20px;
     .image {
-        text-align: center;
-        height: 85%;
-        img{
-            width: 80%;
-            height: 100%;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .CustomButton {
+            opacity: 0.8;
+            border: 1px solid black;
+            margin-top: 170px;
+            button {
+           
+             border-radius: 0;   
+                &:hover {
+                    opacity: 1;
+                    background-color: #363636;
+                    color: white;
+                }
+            }
+            
         }
     }
     .detail {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 10px 40px;
+        padding: 10px 10px;
+        flex-wrap: wrap;
     }
 }
