@@ -14,7 +14,7 @@ import {withRouter} from 'react-router-dom'
 const CheckoutDropdown = ({items, toggleDisplay, history}) => {
     console.log(items)
     return (
-        <div className='CheckoutDropdown' onMouseLeave={() => toggleDisplay()}>
+        <div className='CheckoutDropdown' >
             <div className='checkout-btn'>
                 {items.length === 0 ?  "" : (
                     <CustomButton 

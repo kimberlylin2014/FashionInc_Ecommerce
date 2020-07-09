@@ -7,7 +7,7 @@ import CheckoutShoppingBag from '../../components/checkoutShoppingBag/checkoutSh
 const CheckoutPage = () => {
     return(
         <div class='CheckoutPage'>
-            <h1>Check Out</h1>
+            {/* <h1>Check Out</h1> */}
             <CheckoutShoppingBag />
         </div>
     )

@@ -4,7 +4,7 @@
     justify-content: space-around;
     align-items: center;
     img {
-        width: 180px;
+        width: 170px;
     }
     .product,
     .name,
@@ -23,8 +23,12 @@
             cursor: pointer;
         }
     }
-    .price {
+    .price,
+    .remove {
         width: 19%;
         font-size: 20px;
+    }
+    .remove {
+        cursor: pointer;
     }
 }

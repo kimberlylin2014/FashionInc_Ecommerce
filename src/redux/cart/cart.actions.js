@@ -21,3 +21,17 @@ export const deleteItem = (item) => {
         payload: item
     }
 }
+
+export const removeEntireItemFromCart = (item) => {
+    return {
+        type: cartActionTypes.REMOVE_ITEM_FROM_CART,
+        payload: item
+    }
+}
+
+
+export const emptyCart = () => {
+    return {
+        type: cartActionTypes.EMPTY_CART
+    }
+}

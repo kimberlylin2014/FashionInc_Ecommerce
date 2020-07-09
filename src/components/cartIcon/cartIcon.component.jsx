@@ -9,7 +9,7 @@ import {getTotalCartQuantity} from '../../redux/cart/cart.selectors'
 const CartIcon = ({toggleDisplay, totalCartQuantity}) => {
     return(
         <div className='CartIcon'
-            onMouseEnter={() => toggleDisplay()}         
+            onClick={() => toggleDisplay()}         
         >
             <ShoppingIcon className='icon'/>
             <span className='itemCount'>{totalCartQuantity}</span>

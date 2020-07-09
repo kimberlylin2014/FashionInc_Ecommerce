@@ -33,6 +33,7 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
       const createdAt = new Date();
       try {
         await userRef.set({
+           cart: [],
            displayName,
            email,
            createdAt,

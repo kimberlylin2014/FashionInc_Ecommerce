@@ -30,3 +30,7 @@ export const deleteItemFromCart = (currState, itemToDelete) => {
         return item;
     })
 }
+
+export const removeEntireItemFromCart =(currState, itemToDelete) => {
+    return currState.items.filter(item => item.id !== itemToDelete.id)
+}

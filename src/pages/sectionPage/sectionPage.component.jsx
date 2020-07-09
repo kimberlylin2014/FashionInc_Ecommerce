@@ -4,11 +4,10 @@ import { selectCollectionSection } from '../../redux/shop/shop.selectors';
 import { connect } from 'react-redux';
 
 import ShopItem from '../../components/shop-item/shop-item.component'
+import {withRouter} from 'react-router-dom'
 
 const SectionPage = (props) => {
     const {section} = props;
-    
-    console.log(section)
     return (
         <div>
             <h1 className='text-center mt-5 mb-5'>{section.title}</h1>
@@ -26,4 +25,6 @@ const SectionPage = (props) => {
 const mapStateToProps = (state, props) => {
     return {section: selectCollectionSection(props.match.params.section)(state)}
 }
-export default connect(mapStateToProps)(SectionPage);
+export default withRouter(connect(mapStateToProps)(SectionPage));
+
+

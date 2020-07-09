@@ -9,7 +9,7 @@ const DirectoryItem = ({...section}) => {
         <div className='DirectoryItem' onClick={() => history.push(`${match.path}/${linkUrl}`)} >
             <div className='background-image' style={{backgroundImage: `url(${imageUrl})`}}>
                 <div className='content'>
-                    <h3 className='title'>{title}</h3>
+                    <h4 className='title'>{title}</h4>
                     <span className='subtitle'>Shop Now</span>
                 </div>
             </div>

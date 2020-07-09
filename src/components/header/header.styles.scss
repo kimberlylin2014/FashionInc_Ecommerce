@@ -1,7 +1,10 @@
 .Header nav {
     height: 85px;
     box-shadow: 0 0 12px 0 rgba(0,0,0,.2);
-
+    .username {
+        color: #ff9a76;
+        font-weight: 500;
+    }
     .collapse {
         position: relative;
     }

@@ -27,6 +27,7 @@ class App extends Component {
       if(authUser) {
         let userRef = await createUserProfileDocument(authUser);
         userRef.onSnapshot(snapShot => {
+          console.log(snapShot.data())
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data()
@@ -46,7 +47,6 @@ class App extends Component {
           <Route exact path='/homepage/shop' render ={() => (
             currentUser ? (
               <ShopOverviewPage />
-             
             ) : (
               <Redirect to='/homepage'/>
             )
@@ -88,13 +88,15 @@ class App extends Component {
           )}/>
           <Route exact path='/SignIn' render={() => (
             currentUser ? (
-            <Redirect to='/homepage'/>) :(
-            <SignInPage />)
+              <Redirect to='/homepage'/>
+            ) :(
+              <SignInPage />)
           )}/>
           <Route exact path='/SignUp' render={() => (
             currentUser ? (
-            <Redirect to='/homepage'/>) :(
-            <SignUpPage />)
+              <Redirect to='/homepage'/>
+            ) :(
+              <SignUpPage />)
           )}/>
         </Switch>
       </div>

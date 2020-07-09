@@ -30,13 +30,21 @@ import {
       <div className="Header">
         <Navbar color="light" light expand="md">
           <div className='container'>
-            <NavbarBrand  onClick={() => history.push('/homePage')}> TRENDING FASHION INC.</NavbarBrand>
+            <NavbarBrand  onClick={() => history.push('/homePage')}> TRENDING INC.</NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {currentUser ?  
                   <NavItem>
-                    <NavLink onClick={()=> history.push('/myAccount')}>My Account</NavLink>
+                    <NavLink onClick={()=> history.push('/myAccount')}> <span className='username'>{currentUser.displayName}'s</span>  Account</NavLink>
+                  </NavItem>
+                  : 
+                    "" 
+                }  
+                
+                {currentUser ?  
+                  <NavItem>
+                    <NavLink onClick={()=> history.push('/homepage/shop')} >Shop Overview</NavLink>
                   </NavItem>
                   : 
                     "" 
@@ -44,13 +52,6 @@ import {
                 {currentUser ?  
                   <NavItem>
                     <NavLink onClick={()=> auth.signOut()}>Log Out</NavLink>
-                  </NavItem>
-                  : 
-                    "" 
-                }  
-                {currentUser ?  
-                  <NavItem>
-                    <NavLink onClick={()=> history.push('/homepage/shop')} >Shop Overview</NavLink>
                   </NavItem>
                   : 
                     "" 
