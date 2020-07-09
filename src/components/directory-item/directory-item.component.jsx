@@ -5,8 +5,6 @@ import { withRouter } from 'react-router-dom';
 
 const DirectoryItem = ({...section}) => {
     const {title, linkUrl, imageUrl, id, match, history} = section;
-    console.log(section)
-    console.log(linkUrl)
     return (
         <div className='DirectoryItem' onClick={() => history.push(`${match.path}/${linkUrl}`)} >
             <div className='background-image' style={{backgroundImage: `url(${imageUrl})`}}>

@@ -3,7 +3,7 @@ import './customSignInForm.styles.scss'
 import { Form } from 'reactstrap';
 import CustomFormInput from '../customFormInput/customFormInput.component'
 import CustomButton from '../customButton/customButton.component'
-
+import {auth} from '../../firebase/firebase.util'
 class CustomSignInForm extends Component {
     constructor(props) {
         super(props)
@@ -12,12 +12,18 @@ class CustomSignInForm extends Component {
             password: ''
         }
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleSignInClick = this.handleSignInClick.bind(this);
     }
     handleOnChange(e) {
         const {name, value} = e.target;
         this.setState({
             [name]: value
         })
+    }
+    async handleSignInClick(e) {
+        const {email, password} = this.state;
+        e.preventDefault();
+        await auth.signInWithEmailAndPassword(email, password);
     }
     render() {
         return (
@@ -34,7 +40,7 @@ class CustomSignInForm extends Component {
                     handleOnChange={this.handleOnChange}
                     value={this.state.password}
                 />
-                <CustomButton isSignIn type='submit'>Sign In</CustomButton>
+                <CustomButton isSignIn type='submit' onClick={this.handleSignInClick}>Sign In</CustomButton>
             </Form>
         ) 
    }

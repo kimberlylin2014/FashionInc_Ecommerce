@@ -8,7 +8,6 @@ import { createStructuredSelector } from 'reselect'
 import DirectoryItem from '../directory-item/directory-item.component'
 
 const Directory = ({ sections }) => {
-    console.log(sections)
     return (
         <div className='Directory'>
             <div className='container'>

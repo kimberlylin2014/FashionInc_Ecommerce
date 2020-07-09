@@ -19,9 +19,9 @@ import {
   import { selectCurrentUser } from '../../redux/user/user.selectors'
   import { auth } from '../../firebase/firebase.util'
   import  {getCartVisibility} from '../../redux/cart/cart.selectors'
-  
-  const Header = ({currentUser, cartVisibility, history, ...props}) => {
-    console.log(cartVisibility)
+  import {toggleDisplay} from '../../redux/cart/cart.actions'
+
+  const Header = ({currentUser, cartVisibility, toggleDisplay, history, ...props}) => {
     const [isOpen, setIsOpen] = useState(false);
   
     const toggle = () => setIsOpen(!isOpen);
@@ -50,13 +50,13 @@ import {
                 }  
                 {currentUser ?  
                   <NavItem>
-                    <NavLink onClick={()=> history.push('/homepage/shop')}>Shop Overview</NavLink>
+                    <NavLink onClick={()=> history.push('/homepage/shop')} >Shop Overview</NavLink>
                   </NavItem>
                   : 
                     "" 
                 }  
                 {currentUser ?  
-                  <NavItem>
+                  <NavItem >
                     <CartIcon />
                   </NavItem>
                   : 
@@ -81,4 +81,9 @@ import {
     cartVisibility: getCartVisibility
   });
 
-  export default withRouter(connect(mapStateToProps)(Header));
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleDisplay: () => dispatch(toggleDisplay())
+    }
+}
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

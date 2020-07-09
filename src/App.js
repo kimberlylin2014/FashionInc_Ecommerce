@@ -26,7 +26,6 @@ class App extends Component {
     auth.onAuthStateChanged(async(authUser) => {
       if(authUser) {
         let userRef = await createUserProfileDocument(authUser);
-        let snapShot = await userRef.get();
         userRef.onSnapshot(snapShot => {
           setCurrentUser({
             id: snapShot.id,
@@ -44,9 +43,28 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Switch>
-          <Route exact path='/homepage/shop' component={ShopOverviewPage}/>
-          <Route exact path='/homepage/shop/:section' component={SectionPage}/>
-          <Route exact path='/checkoutPage' component={CheckoutPage}/>
+          <Route exact path='/homepage/shop' render ={() => (
+            currentUser ? (
+              <ShopOverviewPage />
+             
+            ) : (
+              <Redirect to='/homepage'/>
+            )
+          )}/>
+          <Route exact path='/homepage/shop/:section' render ={() => (
+            currentUser ? (
+              <SectionPage />
+            ) : (
+              <Redirect to='/homepage'/>
+            )
+          )}/>
+          <Route exact path='/checkoutPage' render ={() => (
+            currentUser ? (
+              <CheckoutPage />
+            ) : (
+              <Redirect to='/homepage'/>
+            )
+          )}/>
           <Route exact path='/' render ={() => (
             currentUser ? (
               <Redirect to='/homepage'/>

@@ -8,7 +8,9 @@ import {createStructuredSelector} from 'reselect'
 import {getTotalCartQuantity} from '../../redux/cart/cart.selectors'
 const CartIcon = ({toggleDisplay, totalCartQuantity}) => {
     return(
-        <div className='CartIcon' onClick={() => toggleDisplay() }>
+        <div className='CartIcon'
+            onMouseEnter={() => toggleDisplay()}         
+        >
             <ShoppingIcon className='icon'/>
             <span className='itemCount'>{totalCartQuantity}</span>
         </div>

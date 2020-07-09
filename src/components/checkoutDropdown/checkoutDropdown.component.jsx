@@ -9,10 +9,12 @@ import DropDownItem from '../dropDownItem/dropDownItem.component'
 import CustomButton from '../customButton/customButton.component'
 import {withRouter} from 'react-router-dom'
 
+
+
 const CheckoutDropdown = ({items, toggleDisplay, history}) => {
     console.log(items)
     return (
-        <div className='CheckoutDropdown'>
+        <div className='CheckoutDropdown' onMouseLeave={() => toggleDisplay()}>
             <div className='checkout-btn'>
                 {items.length === 0 ?  "" : (
                     <CustomButton 
@@ -34,7 +36,7 @@ const CheckoutDropdown = ({items, toggleDisplay, history}) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-    items: selectCartItems
+    items: selectCartItems,
 })
 
 const mapDispatchToProps = (dispatch) => {
