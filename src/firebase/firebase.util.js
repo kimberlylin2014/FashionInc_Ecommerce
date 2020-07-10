@@ -45,5 +45,5 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
   }
   return userRef;
 }
-  
+
 export default firebase;
