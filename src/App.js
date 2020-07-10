@@ -8,6 +8,7 @@ import SignInPage from './pages/signInPage/signInPage.component';
 import SignUpPage from './pages/signUpPage/signUpPage.component';
 import HomePage from './pages/homePage/homePage.component'
 import MyAccount from './pages/userAccountPage/userAccountPage.component'
+import ShopPage from './pages/shopPage/shopPage.component'
 import SectionPage from './pages/sectionPage/sectionPage.component'
 import ShopOverviewPage from './pages/shopOverviewPage/shopOverviewPage.component'
 import CheckoutPage from './pages/checkoutPage/checkoutPage.component'
@@ -44,20 +45,7 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Switch>
-          <Route exact path='/homepage/shop' render ={() => (
-            currentUser ? (
-              <ShopOverviewPage />
-            ) : (
-              <Redirect to='/homepage'/>
-            )
-          )}/>
-          <Route exact path='/homepage/shop/:section' render ={() => (
-            currentUser ? (
-              <SectionPage />
-            ) : (
-              <Redirect to='/homepage'/>
-            )
-          )}/>
+          <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkoutPage' render ={() => (
             currentUser ? (
               <CheckoutPage />

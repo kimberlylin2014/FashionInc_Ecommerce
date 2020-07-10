@@ -44,7 +44,7 @@ import {
                 
                 {currentUser ?  
                   <NavItem>
-                    <NavLink onClick={()=> history.push('/homepage/shop')} >Shop Overview</NavLink>
+                    <NavLink onClick={()=> history.push('/shop')} >Shop Overview</NavLink>
                   </NavItem>
                   : 
                     "" 
