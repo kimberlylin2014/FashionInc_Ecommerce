@@ -8,8 +8,8 @@
     }
     .btn-light {
         &.google {
-            background-color: #a8df65;
-            color: black;
+            background-color: #e8505b;
+            color: white;
             width: 50%;
             @include authButtons()
         }

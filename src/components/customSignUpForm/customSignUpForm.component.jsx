@@ -53,6 +53,7 @@ class CustomSignUpForm extends Component {
                     name='password'
                     handleOnChange = {this.handleOnChange}
                     value ={this.state.password}
+                    type='password'
                 />
                 <div>
                     <CustomButton isSignIn 

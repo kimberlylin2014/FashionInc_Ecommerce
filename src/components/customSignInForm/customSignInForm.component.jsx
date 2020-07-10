@@ -39,6 +39,7 @@ class CustomSignInForm extends Component {
                     name='password'
                     handleOnChange={this.handleOnChange}
                     value={this.state.password}
+                    type='password'
                 />
                 <CustomButton isSignIn type='submit' onClick={this.handleSignInClick}>Sign In</CustomButton>
             </Form>
