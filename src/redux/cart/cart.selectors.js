@@ -27,3 +27,13 @@ export const getTotalCartCost = createSelector(
         return items.reduce((accumulator, item) => accumulator + (item.quantity * item.price), 0)
     }
 )
+
+// export const selectIsCartLoading = createSelector(
+//     [selectCart],
+//     (cart) => cart.isLoading
+// )
+
+export const selectIsCartLoaded = createSelector(
+    [selectCart],
+    (cart) => !!cart.items
+)

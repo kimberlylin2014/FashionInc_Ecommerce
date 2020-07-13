@@ -18,14 +18,18 @@ import {
   import {createStructuredSelector} from 'reselect'
   import { selectCurrentUser } from '../../redux/user/user.selectors'
   import { auth } from '../../firebase/firebase.util'
-  import  {getCartVisibility} from '../../redux/cart/cart.selectors'
+  import  {getCartVisibility, selectCartItems} from '../../redux/cart/cart.selectors'
   import {toggleDisplay} from '../../redux/cart/cart.actions'
 
-  const Header = ({currentUser, cartVisibility, toggleDisplay, history, ...props}) => {
+  import {saveCartCollectionAsync} from '../../redux/cart/cart.actions';
+// import { selectCollectionPreview } from '../../redux/shop/shop.selectors';
+  import LogOutModal from '../logOutModal/logOutModal.component'
+
+  const Header = ({currentUser, cartVisibility, 
+                  toggleDisplay, history, saveCartCollectionAsync, cartItems, ...props}) => {
     const [isOpen, setIsOpen] = useState(false);
   
     const toggle = () => setIsOpen(!isOpen);
-
     return (
       <div className="Header">
         <Navbar color="light" light expand="md">
@@ -51,7 +55,7 @@ import {
                 }  
                 {currentUser ?  
                   <NavItem>
-                    <NavLink onClick={()=> auth.signOut()}>Log Out</NavLink>
+                    <LogOutModal buttonLabel='Log Out' className='logout'/>
                   </NavItem>
                   : 
                     "" 
@@ -79,12 +83,14 @@ import {
   
   const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
-    cartVisibility: getCartVisibility
+    cartVisibility: getCartVisibility,
+    cartItems: selectCartItems
   });
 
   const mapDispatchToProps = (dispatch) => {
     return {
-        toggleDisplay: () => dispatch(toggleDisplay())
+        toggleDisplay: () => dispatch(toggleDisplay()),
+        saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))
     }
 }
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

@@ -19,32 +19,46 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createUserProfileDocument} from './firebase/firebase.util';
 
+import {addCartCollection} from './redux/cart/cart.actions'
+
+// import { selectIsCartLoaded } from './redux/cart/cart.selectors'
+// import WithSpinner from './components/with-spinner/with-spinner.component';
+
+
 
 class App extends Component {
   async componentWillMount() {
-    const {setCurrentUser} = this.props
+    const {setCurrentUser, addCartCollection} = this.props
     auth.onAuthStateChanged(async(authUser) => {
       if(authUser) {
         let userRef = await createUserProfileDocument(authUser);
         userRef.onSnapshot(snapShot => {
+          const { cart } = snapShot.data();  
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data()
           });
+          addCartCollection(cart)
         })
       } else {
         setCurrentUser(authUser);
-     
       }  
     });
   }
   render() {
     const {currentUser} = this.props;
+    console.log(currentUser)
     return(
       <div className='App'>
         <Header />
         <Switch>
-          <Route path='/shop' component={ShopPage} />
+          <Route path='/shop' render ={(props) => (
+            currentUser ? (
+              <ShopPage {...props}/>
+            ) : (
+              <Redirect to='/homepage'/>
+            )
+          )} />
           <Route exact path='/checkoutPage' render ={() => (
             currentUser ? (
               <CheckoutPage />
@@ -93,12 +107,13 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCurrentUser: (user) => dispatch(setCurrentUser(user))
+    setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+    addCartCollection: (collection) => dispatch(addCartCollection(collection)),
   }
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
+  currentUser: selectCurrentUser
 });
 
 

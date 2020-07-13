@@ -3,7 +3,9 @@ import {addItemToCart, deleteItemFromCart, removeEntireItemFromCart} from './car
 
 const INITIAL_STATE = {
     items: [],
-    display: false
+    display: false,
+    isLoading: false,
+    errorMessage: undefined
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -32,6 +34,27 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 items: []
+            }
+        case cartActionTypes.SAVE_CART_START:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case cartActionTypes.SAVE_CART_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+            }
+        case cartActionTypes.SAVE_CART_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                errorMessage: action.payload
+            }
+        case cartActionTypes.ADD_CART_COLLECTION:
+            return {
+                ...state,
+                items: action.payload
             }
         default:
             return state;
