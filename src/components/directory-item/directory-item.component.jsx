@@ -4,7 +4,7 @@ import './directory-item.styles.scss';
 import { withRouter } from 'react-router-dom';
 
 const DirectoryItem = ({...section}) => {
-    const {title, linkUrl, imageUrl, id, match, history} = section;
+    const {title, linkUrl, imageUrl, history} = section;
     return (
         <div className='DirectoryItem' onClick={() => history.push(`/${linkUrl}`)} >
             <div className='background-image' style={{backgroundImage: `url(${imageUrl})`}}>

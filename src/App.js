@@ -9,8 +9,6 @@ import SignUpPage from './pages/signUpPage/signUpPage.component';
 import HomePage from './pages/homePage/homePage.component'
 import MyAccount from './pages/userAccountPage/userAccountPage.component'
 import ShopPage from './pages/shopPage/shopPage.component'
-import SectionPage from './pages/sectionPage/sectionPage.component'
-import ShopOverviewPage from './pages/shopOverviewPage/shopOverviewPage.component'
 import CheckoutPage from './pages/checkoutPage/checkoutPage.component'
 
 import {auth} from './firebase/firebase.util';
@@ -18,8 +16,9 @@ import {auth} from './firebase/firebase.util';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
-import { setCurrentUser } from './redux/user/user.actions'
-import { createUserProfileDocument } from './firebase/firebase.util'
+import { setCurrentUser } from './redux/user/user.actions';
+import { createUserProfileDocument} from './firebase/firebase.util';
+
 
 class App extends Component {
   async componentWillMount() {
@@ -28,7 +27,6 @@ class App extends Component {
       if(authUser) {
         let userRef = await createUserProfileDocument(authUser);
         userRef.onSnapshot(snapShot => {
-          console.log(snapShot.data())
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data()
@@ -36,6 +34,7 @@ class App extends Component {
         })
       } else {
         setCurrentUser(authUser);
+     
       }  
     });
   }
@@ -99,7 +98,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

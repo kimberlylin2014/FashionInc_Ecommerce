@@ -14,7 +14,7 @@ export const selectCollectionSection = (sectionParam) => {
     return createSelector(
         [selectShopCollections],
         (collections) => {
-            return collections[sectionParam];
+            return collections ?  collections[sectionParam] : null;
         }
     )
 }
@@ -22,5 +22,5 @@ export const selectCollectionSection = (sectionParam) => {
 // select the array of categories along with items
 export const selectCollectionPreview = createSelector(
     [selectShopCollections],
-    (collections) => Object.keys(collections).map(key => collections[key])
+    (collections) => collections ? Object.keys(collections).map(key => collections[key]) : []
 )
