@@ -1,6 +1,9 @@
 .Header nav {
-    height: 85px;
+    
     box-shadow: 0 0 12px 0 rgba(0,0,0,.2);
+    @media (min-width: 576px) {
+        height: 85px;
+    }
     .username {
         color: #ff9a76;
         font-weight: 500;
