@@ -19,7 +19,7 @@ import {
   import { selectCurrentUser } from '../../redux/user/user.selectors'
   import { auth } from '../../firebase/firebase.util'
   import  {getCartVisibility, selectCartItems} from '../../redux/cart/cart.selectors'
-  import {toggleDisplay} from '../../redux/cart/cart.actions'
+
 
   import {saveCartCollectionAsync} from '../../redux/cart/cart.actions';
 // import { selectCollectionPreview } from '../../redux/shop/shop.selectors';
@@ -35,7 +35,8 @@ import {
         <Navbar color="light" light expand="md">
           <div className='container'>
             <NavbarBrand  onClick={() => history.push('/homePage')}> TRENDING INC.</NavbarBrand>
-            <NavbarToggler onClick={toggle} />
+            {currentUser ?  <NavbarToggler onClick={toggle} /> : ""}
+           
             <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {currentUser ?  
@@ -56,6 +57,13 @@ import {
                 {currentUser ?  
                   <NavItem>
                     <LogOutModal buttonLabel='Log Out' className='logout'/>
+                  </NavItem>
+                  : 
+                    "" 
+                }  
+                {currentUser ?  
+                  <NavItem id='checkout-link'>
+                     <NavLink onClick={()=> history.push('/checkoutPage')}>Checkout</NavLink>
                   </NavItem>
                   : 
                     "" 
@@ -89,7 +97,6 @@ import {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-        toggleDisplay: () => dispatch(toggleDisplay()),
         saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))
     }
 }

@@ -15,6 +15,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 display: !state.display
             }
+        case cartActionTypes.EDIT_DISPLAY: 
+            return {
+                ...state,
+                display: action.payload
+            }
         case cartActionTypes.ADD_ITEM:
             return {
                 ...state,

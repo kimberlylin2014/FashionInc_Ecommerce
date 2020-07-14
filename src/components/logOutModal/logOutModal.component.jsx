@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import {createStructuredSelector} from 'reselect'
 import { selectCurrentUser } from '../../redux/user/user.selectors'
 import  {selectCartItems} from '../../redux/cart/cart.selectors'
-import {NavLink} from 'reactstrap'
+import {NavLink} from 'reactstrap';
+import {editDisplay} from '../../redux/cart/cart.actions'
 
 const LogOutModal = (props) => {
   const {
@@ -14,7 +15,8 @@ const LogOutModal = (props) => {
     className,
     saveCartCollectionAsync, 
     cartItems,
-    currentUser
+    currentUser,
+    editDisplay
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -32,11 +34,13 @@ const LogOutModal = (props) => {
         </ModalBody>
         <ModalFooter>
             <Button color="secondary" onClick={() => {
-                    auth.signOut()
+              editDisplay(false);
+              auth.signOut();
             }}>Don't Save</Button>
           {' '}
           <Button color="warning" onClick={()=> {
-                saveCartCollectionAsync(currentUser.id, cartItems)
+            editDisplay(false);
+            saveCartCollectionAsync(currentUser.id, cartItems)
           }}>Save Cart</Button>
         </ModalFooter>
       </Modal>
@@ -50,6 +54,7 @@ const mapStateToProps = createStructuredSelector({
 
   const mapDispatchToProps = (dispatch) => {
     return {
+        editDisplay: (booleanValue) => dispatch(editDisplay(booleanValue)),
         saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))
     }
 }

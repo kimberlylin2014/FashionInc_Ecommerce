@@ -8,29 +8,64 @@ const CheckoutShoppingBagItem = ({item, addItem, deleteItem, removeEntireItemFro
     const {imageUrl, name, quantity, price} = item;
     return (
         <div className='CheckoutShoppingBagItem'>
-            <div className='product'>
-                <img src={imageUrl} alt=""/>
+            <div className='CheckoutShoppingBagItem-Mobile'>
+                <div className='product'>
+                    <img src={imageUrl} alt=""/>
+                    <div className='name'>
+                        <span>{name}</span>
+                    </div>
+                </div>
+                <div className='product-details'>
+                    <div className='remove' onClick={() => removeEntireItemFromCart(item)}>
+                        <span>&#10005;</span>
+                    </div>
+                    <div className='price'>
+                        <span>$ {price}</span>
+                    </div>
+                    <div className='quantity'>
+                        <span>
+                            <span className='decrease'
+                                onClick={() => deleteItem(item)}
+                            >&#10094;</span>
+                            {quantity}
+                            <span className='increase' 
+                                onClick={() => addItem(item)}>&#10095;</span>
+                        </span>
+                    </div>
+                   
+      
+         
+               
+                    
+                </div>
+                
             </div>
-            <div className='name'>
-                <span>{name}</span>
-            </div>
-            <div className='quantity'>
-                <span>
-                    <span className='decrease'
-                          onClick={() => deleteItem(item)}
-                    >&#10094;</span>
-                    {quantity}
-                    <span className='increase' 
-                          onClick={() => addItem(item)}>&#10095;</span>
-                </span>
-            </div>
-            <div className='price'>
-                <span>$ {price}</span>
-            </div>
-            <div className='remove' onClick={() => removeEntireItemFromCart(item)}>
-                <span>&#10005;</span>
+            <div className='CheckoutShoppingBagItem-Desktop'>
+                <div className='product'>
+                    <img src={imageUrl} alt=""/>
+                </div>
+                <div className='name'>
+                    <span>{name}</span>
+                </div>
+                <div className='quantity'>
+                    <span>
+                        <span className='decrease'
+                            onClick={() => deleteItem(item)}
+                        >&#10094;</span>
+                        {quantity}
+                        <span className='increase' 
+                            onClick={() => addItem(item)}>&#10095;</span>
+                    </span>
+                </div>
+                <div className='price'>
+                    <span>$ {price}</span>
+                </div>
+                <div className='remove' onClick={() => removeEntireItemFromCart(item)}>
+                    <span>&#10005;</span>
+                </div>
             </div>
         </div>
+       
     )
 }
 

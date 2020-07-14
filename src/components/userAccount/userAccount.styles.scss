@@ -1,8 +1,14 @@
 .UserAccount {
-    width: 40%;
+    width: 98%;
     background-color: #393e46;
     padding: 30px;
     color: white;
+    @media(min-width: 400px) {
+        width: 90%;
+    }
+    @media(min-width: 576px) {
+        width: 500px;
+    }
 
     button {
         margin: 10px 0;

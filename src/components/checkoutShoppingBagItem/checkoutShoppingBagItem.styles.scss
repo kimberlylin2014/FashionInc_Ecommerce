@@ -1,34 +1,85 @@
-.CheckoutShoppingBagItem {
-    margin: 20px 0;
+.CheckoutShoppingBagItem-Mobile {
+    display: block;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    img {
-        width: 170px;
-    }
-    .product,
-    .name,
-    .quantity {
-        width: 21%;
-        font-size: 20px;
-    }
-    .quantity {
-        .increase {
-            margin: 10px;
-            cursor: pointer;
-        
-        }
-        .decrease {
-            margin: 10px;
-            cursor: pointer;
+    .product {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 130px;
         }
     }
-    .price,
-    .remove {
-        width: 19%;
-        font-size: 20px;
+    .product-details {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        width: 55%;
+        .price,
+        .remove,
+        .quantity {
+            margin: 10px;
+        }
+        .quantity {
+            .increase {
+                margin: 10px;
+                cursor: pointer;
+            }
+            .decrease {
+                margin: 10px;
+                cursor: pointer;
+            }
+        }
+        .remove {
+            cursor: pointer;
+        }  
     }
-    .remove {
-        cursor: pointer;
+    @media(min-width: 996px) {
+        display: none;
     }
+}
+
+.CheckoutShoppingBagItem-Desktop {
+    display: none;
+    @media(min-width: 996px) {
+        display: block;
+        margin: 20px 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-width: 760px;
+        overflow: scroll;
+        img {
+            width: 170px;
+        }
+        .product,
+        .name,
+        .quantity {
+            width: 21%;
+            font-size: 20px;
+        }
+        .quantity {
+            .increase {
+                margin: 10px;
+                cursor: pointer;
+            }
+            .decrease {
+                margin: 10px;
+                cursor: pointer;
+            }
+        }
+        .price,
+        .remove {
+            width: 19%;
+            font-size: 20px;
+        }
+        .remove {
+            cursor: pointer;
+        }
+    } 
 }

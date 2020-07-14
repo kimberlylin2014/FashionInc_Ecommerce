@@ -1,25 +1,44 @@
 .SignInPage {
-
     .header {
         text-align: center;
         margin-top: 5%;
         margin-bottom: 20px;
     }
     .login-section {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-
+        @media(min-width: 769px) {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            // width: 100%;
+        }
         .form {
-            width: 50%;
-            border-right: 1px solid black;
-            padding: 50px;
+            width: 100%;
+            // border-right: 1px solid black;
+            padding: 0px;
+            @media(min-width: 769px) {
+                width: 45%;
+                border-right: 1px solid black;
+                padding: 50px;
+            }
+            @media(min-width: 996px) {
+                width: 35%;
+                border-right: 1px solid black;
+                padding: 40px 20 0 0px;
+            }
         }
         .auth-buttons{
-            width: 50%;
-            padding: 20px;
-            text-align: center;
+            button {
+                min-width: 160px;
+                // width: 40%;
+                padding: 10px;
+
+                margin: 0;
+                @media(min-width: 769px) {
+                    // width: 200px;
+                    padding: 15px;
+                    text-align: center;
+                }
+            }  
         }
     }
 }

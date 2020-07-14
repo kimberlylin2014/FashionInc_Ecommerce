@@ -1,34 +1,39 @@
 .CheckoutDropdown {
-    position: absolute;
-    width: 260px;
-    height: 340px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 12px;
-    border: 1px solid black;
-    background-color: white;
-    top: 63px;
-    right: -50px;
-    z-index: 5;
-    align-items: center;
-    overflow: scroll;
-
-    .message {
+    display: none;
+}
+@media(min-width: 768px) {
+    .CheckoutDropdown {
+        position: absolute;
+        width: 260px;
+        height: 340px;
         display: flex;
-        height: 100%;
+        flex-direction: column;
+        padding: 20px 12px;
+        border: 1px solid black;
+        background-color: white;
+        top: 63px;
+        right: -50px;
+        z-index: 5;
         align-items: center;
-        justify-content: center;
-    }
-    .checkout-btn {
-        button{
-            background-color: black;
-            color: white;
-            margin-bottom: 15px;
-            cursor: pointer;
-            &:hover {
-                background: rgb(237, 236, 236);
-                color: black;
-                border: 1px solid black;
+        overflow: scroll;
+
+        .message {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+        .checkout-btn {
+            button{
+                background-color: black;
+                color: white;
+                margin-bottom: 15px;
+                cursor: pointer;
+                &:hover {
+                    background: rgb(237, 236, 236);
+                    color: black;
+                    border: 1px solid black;
+                }
             }
         }
     }

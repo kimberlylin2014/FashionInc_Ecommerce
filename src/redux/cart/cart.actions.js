@@ -15,6 +15,13 @@ export const toggleDisplay = () => {
     }
 }
 
+export const editDisplay = (boolean) => {
+    return {
+        type: cartActionTypes.EDIT_DISPLAY,
+        payload: boolean
+    }
+}
+
 export const deleteItem = (item) => {
     return {
         type: cartActionTypes.DELETE_ITEM,
@@ -34,8 +41,6 @@ export const emptyCart = () => {
         type: cartActionTypes.EMPTY_CART
     }
 }
-
-// 
 
 export const addCartCollection = (cartCollection) => {
     return {

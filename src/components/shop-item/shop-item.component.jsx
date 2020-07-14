@@ -8,7 +8,7 @@ import {addItem} from '../../redux/cart/cart.actions'
 const ShopItem = ({...props}) => {
     const {item : {imageUrl, name, price}, colNum, addItem} = props;
     return(
-        <div className={`ShopItem ${colNum}`}>
+        <div className={`ShopItem ${colNum} col-sm-6 col-12`}>
             <div className='image' style={{backgroundImage: `url(${imageUrl})`}}>
                  {/* <img src={imageUrl}/> */}
                  <div className='buy-button'>

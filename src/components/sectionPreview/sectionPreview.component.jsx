@@ -11,8 +11,8 @@ const SectionPreview = (props) => {
     return (
         <div className='SectionPreview container'>
             <h3 onClick={() => history.push(`${match.path}/${routeName}`)}>{title}</h3>
-            <div className='content-preview'>
-                {items.filter((item, index) => index < 4).map(item => <ShopItem key={item.id} item={item} colNum='col-3'/>)}
+            <div className='content-preview row'>
+                {items.filter((item, index) => index < 4).map(item => <ShopItem key={item.id} item={item} colNum='col-lg-3'/>)}
             </div>
         </div>
     )

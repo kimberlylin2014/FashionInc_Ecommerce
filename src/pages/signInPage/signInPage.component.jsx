@@ -17,7 +17,7 @@ const SignInPage = () => {
                     </div>
                     <div className='auth-buttons'>
                         {/* <CustomButton isFB>Login In With Facebook</CustomButton> */}
-                        <CustomButton isGoogle onClick={signInWithGoogle}>Login In With Google</CustomButton>
+                        <CustomButton isGoogle onClick={signInWithGoogle}>Google Login</CustomButton>
                     </div> 
                 </div>
                 
