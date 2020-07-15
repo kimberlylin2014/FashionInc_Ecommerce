@@ -1,7 +1,7 @@
 # Trending Inc. E-Commerce Website
 
 ### Video Demo
-https://youtu.be/mDUaXGQ7saw
+https://youtu.be/a5B6k65jHWg
 
 ### Frontend 
 * Javascript
@@ -9,6 +9,7 @@ https://youtu.be/mDUaXGQ7saw
 * Redux
 * React-Router
 * Reselect Library
+* Redux Thunk
 * Redux Persist
 * Stripe API
 * Sass
@@ -18,9 +19,9 @@ https://youtu.be/mDUaXGQ7saw
 
 ### Website Features
 * Visitors need to Sign Up with email/password or Sign In with Google OAuth to have access to e-commerce website
-* When a user logs in or signs up for an account, the user is autenticated and added to database (if user doesn't exist in database)
+* When a user logs in or signs up for an account, the user is authenticated and added to database (if user doesn't exist in database)
 * When users update their name, the database is updated as well
-* Users can add items to shopping cart, and the shopping cart's items are stored in local storage with Redux-Persist
+* Users can add items to shopping cart, and the shopping cart's items can be saved when user logs out. 
 * When users add and delete items from the shopping cart, the quantity and total cost will be updated accordingly on components
 * Users can attempt to make a payment with a 'test' credit card
 
@@ -28,6 +29,7 @@ https://youtu.be/mDUaXGQ7saw
 ### Focus
 * Build resuable/clean components and scaling the project with React-Redux
 * Extract data with mapStateToProps and dispatching actions witih mapDispatchToProps 
+* Make asynchronous calls with Redux-Thunk
 * Memoize functions with the Reselect Library
 * Implement React Router to navigate through different pages of the website without page refresh
 
