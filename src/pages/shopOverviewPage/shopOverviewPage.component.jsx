@@ -18,7 +18,6 @@ const ShopOverviewPage = ({collectionPreview}) => {
     )
 }
 
-
 const mapStateToProps = createStructuredSelector({
     collectionPreview: selectCollectionPreview
 })

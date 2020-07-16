@@ -52,7 +52,7 @@ const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems
   });
 
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         editDisplay: (booleanValue) => dispatch(editDisplay(booleanValue)),
         saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))

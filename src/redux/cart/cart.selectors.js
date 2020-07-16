@@ -28,10 +28,10 @@ export const getTotalCartCost = createSelector(
     }
 )
 
-// export const selectIsCartLoading = createSelector(
-//     [selectCart],
-//     (cart) => cart.isLoading
-// )
+export const selectIsCartLoading = createSelector(
+    [selectCart],
+    (cart) => cart.isLoading
+)
 
 export const selectIsCartLoaded = createSelector(
     [selectCart],

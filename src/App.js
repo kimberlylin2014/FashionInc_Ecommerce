@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom'
-
 import Header from './components/header/header.component';
 import LandingPage from './pages/landingPage/landingPage.component'
 import SignInPage from './pages/signInPage/signInPage.component';
@@ -10,21 +9,13 @@ import HomePage from './pages/homePage/homePage.component'
 import MyAccount from './pages/userAccountPage/userAccountPage.component'
 import ShopPage from './pages/shopPage/shopPage.component'
 import CheckoutPage from './pages/checkoutPage/checkoutPage.component'
-
 import {auth} from './firebase/firebase.util';
-
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createUserProfileDocument} from './firebase/firebase.util';
-
 import {addCartCollection} from './redux/cart/cart.actions'
-
-// import { selectIsCartLoaded } from './redux/cart/cart.selectors'
-// import WithSpinner from './components/with-spinner/with-spinner.component';
-
-
 
 class App extends Component {
   async componentWillMount() {
@@ -115,6 +106,5 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
