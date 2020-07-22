@@ -10,6 +10,7 @@ import CustomFormInput from '../customFormInput/customFormInput.component'
 import CustomButton from '../customButton/customButton.component'
 
 import {firestore} from '../../firebase/firebase.util'
+import { updateUserInfoStart } from '../../redux/user/user.actions';
 
 class UserAccount extends React.Component {
     constructor(props) {
@@ -31,21 +32,23 @@ class UserAccount extends React.Component {
             editButtonDisable: false,
         })
     }
-    async handleUpdateUserAccount(e) {
+    handleUpdateUserAccount(e) {
+        const {currentUser, updateUserInfoStart} = this.props;
         e.preventDefault();
-        const {currentUser} = this.props;
-        let userRef = await firestore.doc(`users/${currentUser.id}`)
-        let userSnapShot = await userRef.get();
-        if(userSnapShot.exists) {
-            await userRef.update({
-                ...currentUser,
-                displayName: this.state.displayName
-            });
-            this.setState({
-                enabledDisplayNameInput: false,
-                editButtonDisable: false
-            })
-        }
+        updateUserInfoStart(currentUser, this.state.displayName);
+        // const {currentUser} = this.props;
+        // let userRef = await firestore.doc(`users/${currentUser.id}`)
+        // let userSnapShot = await userRef.get();
+        // if(userSnapShot.exists) {
+        //     await userRef.update({
+        //         ...currentUser,
+        //         displayName: this.state.displayName
+        //     });
+        //     this.setState({
+        //         enabledDisplayNameInput: false,
+        //         editButtonDisable: false
+        //     })
+        // }
     }
     enableEdit() {
         this.setState({
@@ -60,7 +63,7 @@ class UserAccount extends React.Component {
         })
     }
     render() {
-        const {currentUser} = this.props;
+        const {currentUser, updateUserInfoStart} = this.props;
     return (
         <div className='UserAccount'>
             <h3>{currentUser.displayName}'s Account</h3>
@@ -93,12 +96,16 @@ class UserAccount extends React.Component {
         </div>
     )
     }
-    
 }
-
 
 const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser
 })
 
-export default connect(mapStateToProps)(UserAccount);
+const mapDisptachToProps = dispatch => {
+    return {
+        updateUserInfoStart: (currentUser, displayName) => dispatch(updateUserInfoStart({currentUser, displayName}))
+    }
+}
+
+export default connect(mapStateToProps, mapDisptachToProps)(UserAccount);

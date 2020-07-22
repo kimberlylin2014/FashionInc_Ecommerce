@@ -9,36 +9,44 @@ import HomePage from './pages/homePage/homePage.component'
 import MyAccount from './pages/userAccountPage/userAccountPage.component'
 import ShopPage from './pages/shopPage/shopPage.component'
 import CheckoutPage from './pages/checkoutPage/checkoutPage.component'
-import {auth} from './firebase/firebase.util';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createUserProfileDocument} from './firebase/firebase.util';
 import {addCartCollection} from './redux/cart/cart.actions'
+import {auth} from './firebase/firebase.util';
+import { checkUserSession } from './redux/user/user.actions'
 
 class App extends Component {
-  async componentWillMount() {
-    const {setCurrentUser, addCartCollection} = this.props
-    auth.onAuthStateChanged(async(authUser) => {
-      if(authUser) {
-        let userRef = await createUserProfileDocument(authUser);
-        userRef.onSnapshot(snapShot => {
-          const { cart } = snapShot.data();  
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-          addCartCollection(cart)
-        })
-      } else {
-        setCurrentUser(authUser);
-      }  
-    });
+  // unsubscribeFromAuth = null
+  componentDidMount() {
+    const { checkUserSession } = this.props
+    checkUserSession();
+    // const {setCurrentUser, addCartCollection} = this.props
+    // returns a function that when we can close subscription
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async(authUser) => {
+    //   if(authUser) {
+    //     let userRef = await createUserProfileDocument(authUser);
+    //     userRef.onSnapshot(snapShot => {
+    //       const { cart } = snapShot.data();  
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data()
+    //       });
+    //       addCartCollection(cart)
+    //     })
+    //   } else {
+    //     setCurrentUser(authUser);
+    //   }  
+    // });
   }
+  // componentWillUnmount() {
+  //   this.unsubscribeFromAuth();
+
+  // }
   render() {
     const {currentUser} = this.props;
-    console.log(currentUser)
     return(
       <div className='App'>
         <Header />
@@ -98,9 +106,12 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-    addCartCollection: (collection) => dispatch(addCartCollection(collection)),
+    checkUserSession: () => dispatch(checkUserSession())
   }
+  // return {
+  //   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  //   addCartCollection: (collection) => dispatch(addCartCollection(collection)),
+  // }
 }
 
 const mapStateToProps = createStructuredSelector({

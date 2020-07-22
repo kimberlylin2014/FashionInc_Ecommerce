@@ -5,6 +5,8 @@ import CustomFormInput from '../customFormInput/customFormInput.component';
 import CustomButton from '../customButton/customButton.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.util'
 
+import  { signUpStart } from '../../redux/user/user.actions';
+import {connect} from 'react-redux'
 
 class CustomSignUpForm extends Component {
     constructor(props) {
@@ -20,12 +22,14 @@ class CustomSignUpForm extends Component {
     async handleSignUpClick(e) {
         e.preventDefault();
         const {displayName, email, password} = this.state;
-        try {
-            let {user} = await auth.createUserWithEmailAndPassword(email, password)
-            createUserProfileDocument(user, {displayName});
-        } catch (error) {
-            console.log(error);
-        }
+        const {signUpStart} = this.props;
+        // try {
+        //     let {user} = await auth.createUserWithEmailAndPassword(email, password)
+        //     createUserProfileDocument(user, {displayName});
+        // } catch (error) {
+        //     console.log(error);
+        // }
+        signUpStart({displayName, email, password})
     }
     handleOnChange(e) {
         const {name, value} = e.target;
@@ -66,4 +70,9 @@ class CustomSignUpForm extends Component {
     }
 }
 
-export default CustomSignUpForm;
+const mapDispatchToProps = dispatch => {
+    return {
+        signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
+    }
+}
+export default connect(null, mapDispatchToProps)(CustomSignUpForm);

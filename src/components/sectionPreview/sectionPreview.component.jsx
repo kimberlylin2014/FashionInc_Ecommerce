@@ -4,10 +4,7 @@ import ShopItem from '../shop-item/shop-item.component';
 import {withRouter} from 'react-router-dom'
 
 const SectionPreview = (props) => {
-
     const {title, routeName, items, history, match} = props;
-    console.log(routeName)
-    console.log(props)
     return (
         <div className='SectionPreview container'>
             <h3 onClick={() => history.push(`${match.path}/${routeName}`)}>{title}</h3>

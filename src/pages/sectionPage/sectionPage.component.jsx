@@ -7,7 +7,6 @@ import ShopItem from '../../components/shop-item/shop-item.component'
 
 const SectionPage = (props) => {
     const {section} = props;
-    console.log(props);
     return (
         <div>
             <h1 className='text-center mt-5 mb-5'>{section.title}</h1>

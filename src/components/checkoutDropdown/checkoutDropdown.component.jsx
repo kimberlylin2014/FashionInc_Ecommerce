@@ -12,7 +12,6 @@ import {withRouter} from 'react-router-dom'
 
 
 const CheckoutDropdown = ({items, toggleDisplay, history}) => {
-    console.log(items)
     return (
         <div className='CheckoutDropdown' >
             <div className='checkout-btn'>

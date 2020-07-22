@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { auth } from '../../firebase/firebase.util';
-import {saveCartCollectionAsync} from '../../redux/cart/cart.actions';
+// import {saveCartCollectionAsync} from '../../redux/cart/cart.actions';
 import { connect } from 'react-redux';
 import {createStructuredSelector} from 'reselect'
 import { selectCurrentUser } from '../../redux/user/user.selectors'
 import  {selectCartItems} from '../../redux/cart/cart.selectors'
 import {NavLink} from 'reactstrap';
-import {editDisplay} from '../../redux/cart/cart.actions'
+import {editDisplay, saveCollectionStart} from '../../redux/cart/cart.actions'
+import { signOutStart } from '../../redux/user/user.actions'
 
 const LogOutModal = (props) => {
   const {
@@ -16,7 +17,9 @@ const LogOutModal = (props) => {
     saveCartCollectionAsync, 
     cartItems,
     currentUser,
-    editDisplay
+    editDisplay,
+    signOutStart,
+    saveCollectionStart
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -30,18 +33,20 @@ const LogOutModal = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Logging Out</ModalHeader>
         <ModalBody>
-            Would you like to save your shopping cart items before logging out?
+            Are you sure you want to log out?
         </ModalBody>
         <ModalFooter>
-            <Button color="secondary" onClick={() => {
+            {/* <Button color="secondary" onClick={() => {
               editDisplay(false);
-              auth.signOut();
-            }}>Don't Save</Button>
+              signOutStart();
+            }}>Don't Save</Button> */}
           {' '}
           <Button color="warning" onClick={()=> {
             editDisplay(false);
-            saveCartCollectionAsync(currentUser.id, cartItems)
-          }}>Save Cart</Button>
+            signOutStart(currentUser.id, cartItems);
+            // saveCollectionStart(currentUser.id, cartItems)
+            // saveCartCollectionAsync(currentUser.id, cartItems)
+          }}>Log Out</Button>
         </ModalFooter>
       </Modal>
     </div>
@@ -55,7 +60,9 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => {
     return {
         editDisplay: (booleanValue) => dispatch(editDisplay(booleanValue)),
-        saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))
+        signOutStart: (userID, cartItems) => dispatch(signOutStart({userID, cartItems})),
+        // saveCollectionStart: (userID, cartItems) => dispatch(saveCollectionStart(userID, cartItems))
+        // saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))
     }
 }
 

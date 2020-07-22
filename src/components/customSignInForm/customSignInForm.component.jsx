@@ -4,6 +4,9 @@ import { Form } from 'reactstrap';
 import CustomFormInput from '../customFormInput/customFormInput.component'
 import CustomButton from '../customButton/customButton.component'
 import {auth} from '../../firebase/firebase.util'
+import { emailSignInStart } from '../../redux/user/user.actions'
+import { connect } from 'react-redux';
+
 class CustomSignInForm extends Component {
     constructor(props) {
         super(props)
@@ -21,9 +24,11 @@ class CustomSignInForm extends Component {
         })
     }
     async handleSignInClick(e) {
-        const {email, password} = this.state;
+        const { email, password} = this.state;
+        const { emailSignInStart } = this.props
         e.preventDefault();
-        await auth.signInWithEmailAndPassword(email, password);
+        // await auth.signInWithEmailAndPassword(email, password);
+        emailSignInStart(email, password)
     }
     render() {
         return (
@@ -47,4 +52,10 @@ class CustomSignInForm extends Component {
    }
 }
 
-export default CustomSignInForm;
+const mapDispatchToProps = dispatch => {
+    return {
+        emailSignInStart: (email, password) => dispatch(emailSignInStart({email, password}))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CustomSignInForm);

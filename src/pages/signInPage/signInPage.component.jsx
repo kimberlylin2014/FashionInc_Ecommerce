@@ -3,9 +3,11 @@ import './signInPage.styles.scss';
 import {Link} from 'react-router-dom'
 import CustomSignInForm from '../../components/customSignInForm/customSignInForm.component'
 import CustomButton from '../../components/customButton/customButton.component'
-import { signInWithGoogle } from '../../firebase/firebase.util'
+// import { signInWithGoogle } from '../../firebase/firebase.util'
+import { googleSignInStart } from '../../redux/user/user.actions'
+import {connect} from 'react-redux'
+const SignInPage = ({googleSignInStart}) => {
 
-const SignInPage = () => {
     return (
         <div className='SignInPage'> 
             <div className='container'>
@@ -17,7 +19,7 @@ const SignInPage = () => {
                     </div>
                     <div className='auth-buttons'>
                         {/* <CustomButton isFB>Login In With Facebook</CustomButton> */}
-                        <CustomButton isGoogle onClick={signInWithGoogle}>Google Login</CustomButton>
+                        <CustomButton type='button' isGoogle onClick={googleSignInStart}>Google Login</CustomButton>
                     </div> 
                 </div>
                 
@@ -26,4 +28,10 @@ const SignInPage = () => {
     )
 }
 
-export default SignInPage;
+const mapDispatchToProps = dispatch => {
+    return {
+        googleSignInStart: () => dispatch(googleSignInStart())
+    } 
+}
+
+export default connect(null, mapDispatchToProps)(SignInPage);

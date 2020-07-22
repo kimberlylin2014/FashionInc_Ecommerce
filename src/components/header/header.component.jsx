@@ -21,12 +21,12 @@ import {
   import  {getCartVisibility, selectCartItems} from '../../redux/cart/cart.selectors'
 
 
-  import {saveCartCollectionAsync} from '../../redux/cart/cart.actions';
+  // import {saveCartCollectionAsync} from '../../redux/cart/cart.actions';
 // import { selectCollectionPreview } from '../../redux/shop/shop.selectors';
   import LogOutModal from '../logOutModal/logOutModal.component'
 
   const Header = ({currentUser, cartVisibility, 
-                  toggleDisplay, history, saveCartCollectionAsync, cartItems, ...props}) => {
+                  toggleDisplay, history, cartItems, ...props}) => {
     const [isOpen, setIsOpen] = useState(false);
   
     const toggle = () => setIsOpen(!isOpen);
@@ -95,9 +95,9 @@ import {
     cartItems: selectCartItems
   });
 
-  const mapDispatchToProps = (dispatch) => {
-    return {
-        saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))
-    }
-}
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+//   const mapDispatchToProps = (dispatch) => {
+//     return {
+//         saveCartCollectionAsync: (collection, userID) => dispatch(saveCartCollectionAsync(collection, userID))
+//     }
+// }
+  export default withRouter(connect(mapStateToProps, null)(Header));
