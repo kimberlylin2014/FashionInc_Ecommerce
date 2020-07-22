@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { selectCollectionSection } from '../../redux/shop/shop.selectors';
 import { connect } from 'react-redux';
-
 import ShopItem from '../../components/shop-item/shop-item.component'
 
 const SectionPage = (props) => {

@@ -3,7 +3,6 @@ import './signInPage.styles.scss';
 import {Link} from 'react-router-dom'
 import CustomSignInForm from '../../components/customSignInForm/customSignInForm.component'
 import CustomButton from '../../components/customButton/customButton.component'
-// import { signInWithGoogle } from '../../firebase/firebase.util'
 import { googleSignInStart } from '../../redux/user/user.actions'
 import {connect} from 'react-redux'
 const SignInPage = ({googleSignInStart}) => {
@@ -18,7 +17,6 @@ const SignInPage = ({googleSignInStart}) => {
                        <CustomSignInForm/>
                     </div>
                     <div className='auth-buttons'>
-                        {/* <CustomButton isFB>Login In With Facebook</CustomButton> */}
                         <CustomButton type='button' isGoogle onClick={googleSignInStart}>Google Login</CustomButton>
                     </div> 
                 </div>

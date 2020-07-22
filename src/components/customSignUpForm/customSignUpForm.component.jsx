@@ -3,8 +3,6 @@ import './customSignUpForm.styles.scss';
 import {Form} from 'reactstrap'
 import CustomFormInput from '../customFormInput/customFormInput.component';
 import CustomButton from '../customButton/customButton.component';
-import { auth, createUserProfileDocument } from '../../firebase/firebase.util'
-
 import  { signUpStart } from '../../redux/user/user.actions';
 import {connect} from 'react-redux'
 
@@ -23,12 +21,6 @@ class CustomSignUpForm extends Component {
         e.preventDefault();
         const {displayName, email, password} = this.state;
         const {signUpStart} = this.props;
-        // try {
-        //     let {user} = await auth.createUserWithEmailAndPassword(email, password)
-        //     createUserProfileDocument(user, {displayName});
-        // } catch (error) {
-        //     console.log(error);
-        // }
         signUpStart({displayName, email, password})
     }
     handleOnChange(e) {

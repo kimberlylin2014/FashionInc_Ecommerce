@@ -31,14 +31,8 @@ const CheckoutShoppingBagItem = ({item, addItem, deleteItem, removeEntireItemFro
                             <span className='increase' 
                                 onClick={() => addItem(item)}>&#10095;</span>
                         </span>
-                    </div>
-                   
-      
-         
-               
-                    
-                </div>
-                
+                    </div>          
+                </div>    
             </div>
             <div className='CheckoutShoppingBagItem-Desktop'>
                 <div className='product'>

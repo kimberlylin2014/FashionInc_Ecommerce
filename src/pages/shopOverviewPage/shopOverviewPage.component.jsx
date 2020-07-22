@@ -1,10 +1,8 @@
 import React from 'react';
 import './shopOverviewPage.styles.scss';
-
 import {selectCollectionPreview} from '../../redux/shop/shop.selectors';
 import  {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect';
-
 import SectionPreview from '../../components/sectionPreview/sectionPreview.component'
 
 const ShopOverviewPage = ({collectionPreview}) => {
@@ -21,4 +19,5 @@ const ShopOverviewPage = ({collectionPreview}) => {
 const mapStateToProps = createStructuredSelector({
     collectionPreview: selectCollectionPreview
 })
+
 export default connect(mapStateToProps)(ShopOverviewPage);

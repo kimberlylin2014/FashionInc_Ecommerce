@@ -1,6 +1,5 @@
 import React from 'react';
 import './directory-item.styles.scss';
-
 import { withRouter } from 'react-router-dom';
 
 const DirectoryItem = ({...section}) => {

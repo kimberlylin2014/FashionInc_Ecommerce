@@ -12,10 +12,6 @@ import CheckoutPage from './pages/checkoutPage/checkoutPage.component'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
-import { setCurrentUser } from './redux/user/user.actions';
-import { createUserProfileDocument} from './firebase/firebase.util';
-import {addCartCollection} from './redux/cart/cart.actions'
-import {auth} from './firebase/firebase.util';
 import { checkUserSession } from './redux/user/user.actions'
 
 class App extends Component {
@@ -43,7 +39,6 @@ class App extends Component {
   }
   // componentWillUnmount() {
   //   this.unsubscribeFromAuth();
-
   // }
   render() {
     const {currentUser} = this.props;
@@ -108,10 +103,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     checkUserSession: () => dispatch(checkUserSession())
   }
-  // return {
-  //   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-  //   addCartCollection: (collection) => dispatch(addCartCollection(collection)),
-  // }
 }
 
 const mapStateToProps = createStructuredSelector({

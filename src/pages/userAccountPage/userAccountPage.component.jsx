@@ -1,7 +1,5 @@
 import React from 'react';
 import './userAccountPage.styles.scss';
-
-
 import UserAccount from '../../components/userAccount/userAccount.component'
 
 const UserAccountPage = () => {

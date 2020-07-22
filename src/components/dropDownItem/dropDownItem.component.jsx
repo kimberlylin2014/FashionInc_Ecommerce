@@ -10,7 +10,6 @@ const DropDownItem = ({item}) => {
                  <span>{name}</span>
                  <span>Quantity: {quantity}</span>
             </div>
-         
         </div>
     )
 }

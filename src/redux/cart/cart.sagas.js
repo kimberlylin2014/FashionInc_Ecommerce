@@ -1,8 +1,6 @@
 import { takeLatest, call, put, all} from 'redux-saga/effects'
-import {cartActionTypes} from "./cart.types"
 import { firestore } from '../../firebase/firebase.util';
 import  { saveCollectionSuccess, saveCollectionFailure, addCartCollection} from './cart.actions'
-
 import userActionTypes from '../user/user.types'
 
 export function* saveCart(userID, cartItems) {

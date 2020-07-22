@@ -2,7 +2,6 @@ import React from 'react';
 import './shopPage.styles.scss';
 import  {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-// import {fetchCollectionsStartAsync} from '../../redux/shop/shop.actions';
 import { fetchCollectionsStart} from '../../redux/shop/shop.actions';
 import SectionPageContainer from '../sectionPage/sectionPage.container'
 import ShopOverviewPageContainer from '../shopOverviewPage/shopOverviewPage.container'

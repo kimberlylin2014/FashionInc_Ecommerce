@@ -3,7 +3,6 @@ import './customSignInForm.styles.scss'
 import { Form } from 'reactstrap';
 import CustomFormInput from '../customFormInput/customFormInput.component'
 import CustomButton from '../customButton/customButton.component'
-import {auth} from '../../firebase/firebase.util'
 import { emailSignInStart } from '../../redux/user/user.actions'
 import { connect } from 'react-redux';
 
@@ -23,11 +22,10 @@ class CustomSignInForm extends Component {
             [name]: value
         })
     }
-    async handleSignInClick(e) {
+    handleSignInClick(e) {
         const { email, password} = this.state;
         const { emailSignInStart } = this.props
         e.preventDefault();
-        // await auth.signInWithEmailAndPassword(email, password);
         emailSignInStart(email, password)
     }
     render() {

@@ -83,4 +83,5 @@ export const getCurrentUser = () => {
     }, reject)
   })
 }
+
 export default firebase;

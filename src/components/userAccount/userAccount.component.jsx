@@ -1,15 +1,11 @@
 import React from 'react';
 import './userAccount.styles.scss';
-
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors'
 import { createStructuredSelector } from 'reselect';
-
 import { Form } from 'reactstrap'
 import CustomFormInput from '../customFormInput/customFormInput.component'
 import CustomButton from '../customButton/customButton.component'
-
-import {firestore} from '../../firebase/firebase.util'
 import { updateUserInfoStart } from '../../redux/user/user.actions';
 
 class UserAccount extends React.Component {

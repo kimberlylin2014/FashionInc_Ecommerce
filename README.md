@@ -6,10 +6,10 @@ https://youtu.be/a5B6k65jHWg
 ### Frontend 
 * Javascript
 * React
-* Redux
+* React-Redux
 * Redux Saga
 * React-Router
-* Reselect Library
+* Reselect 
 * Redux Persist
 * Stripe API
 * Sass

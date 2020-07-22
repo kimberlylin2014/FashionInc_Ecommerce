@@ -4,12 +4,9 @@ import {selectCartItems} from '../../redux/cart/cart.selectors'
 import {toggleDisplay } from '../../redux/cart/cart.actions'
 import {createStructuredSelector} from 'reselect'
 import {connect} from 'react-redux'
-
 import DropDownItem from '../dropDownItem/dropDownItem.component'
 import CustomButton from '../customButton/customButton.component'
 import {withRouter} from 'react-router-dom'
-
-
 
 const CheckoutDropdown = ({items, toggleDisplay, history}) => {
     return (

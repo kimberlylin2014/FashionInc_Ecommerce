@@ -27,10 +27,10 @@ const StripeCheckoutButton = ({price, emptyCart}) => {
     )
 }
 
-
 const mapDispatchToProps = (dispatch) => {
     return {
         emptyCart: () => dispatch(emptyCart())
     }
 }
+
 export default connect(null, mapDispatchToProps)(StripeCheckoutButton);

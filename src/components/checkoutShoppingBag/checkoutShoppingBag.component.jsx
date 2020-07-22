@@ -1,15 +1,12 @@
 import React from 'react';
 import './checkoutShoppingBag.styles.scss';
-
 import { selectCartItems, getTotalCartCost } from '../../redux/cart/cart.selectors';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import CheckoutShoppingBagItem from '../checkoutShoppingBagItem/checkoutShoppingBagItem.component'
-
 import StripeCheckoutButton from '../stripe-button/stripe-button.component'
 
 const CheckoutShoppingBag = ({cartItems, totalCartCost}) => {
-
     return (
         <div className='CheckoutBagSection'>
             <div className='CheckoutShoppingBag-Mobile container'>
@@ -74,8 +71,7 @@ const CheckoutShoppingBag = ({cartItems, totalCartCost}) => {
                 </div>
                 ): ''}
             </div>
-        </div>
-        
+        </div>    
     )
 }
 
@@ -83,4 +79,5 @@ const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems,
     totalCartCost: getTotalCartCost
 })
+
 export default connect(mapStateToProps)(CheckoutShoppingBag);

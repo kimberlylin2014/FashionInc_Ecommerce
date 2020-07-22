@@ -1,6 +1,4 @@
 import { cartActionTypes } from './cart.types';
-import {firestore} from '../../firebase/firebase.util'
-import { auth } from '../../firebase/firebase.util';
 
 export const toggleDisplay = () => {
     return {

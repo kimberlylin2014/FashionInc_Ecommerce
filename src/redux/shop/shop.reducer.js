@@ -1,4 +1,3 @@
-// import SHOP_DATA from './shop.data'
 import shopActionTypes from './shop.types'
 
 const INITIAL_STATE = {
@@ -27,11 +26,6 @@ const shopReducer = (state = INITIAL_STATE, action) => {
                 isFetching: false,
                 errorMessage: action.payload
             }
-        // case shopActionTypes.UPDATE_COLLECTIONS:
-        //     return {
-        //         ...state,
-        //         collections: action.payload
-        //     }
         default: 
             return state;
     }
